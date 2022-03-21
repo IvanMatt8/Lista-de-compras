@@ -17,4 +17,8 @@ export const Container = styled.div`
     font-size: 18px;
     flex: 1;
   }
+  button {
+    border: none;
+    background: transparent;
+  }
 `;
