@@ -9,19 +9,31 @@ const App = () => {
     { id: 1, name: "Pão com batata", done: false },
     { id: 2, name: "Presunto e Queijo", done: true },
   ]);
-  return (
-    <C.Container>
-      <C.Area>
-        <C.Header>Lista de Compras </C.Header>
 
-        <AddArea />
 
-        {list.map((item, index) => (
-          <ListItem key={index} item={item} />
-        ))}
-      </C.Area>
-    </C.Container>
-  );
+const handleAddTask = (taskName: string) => {
+  let newList = [...list];
+  newList.push({
+    id: list.length + 1,
+    name: taskName,
+    done: false,
+  });
+  setList(newList);
+};
+
+return (
+  <C.Container>
+    <C.Area>
+      <C.Header>Lista de Compras </C.Header>
+
+      <AddArea onEnter={handleAddTask} />
+
+      {list.map((item, index) => (
+        <ListItem key={index} item={item} />
+      ))}
+    </C.Area>
+  </C.Container>
+);
 };
 
 export default App;
